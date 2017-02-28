@@ -73,11 +73,12 @@ Connector-specific configuration:
 ```
 
 The db.json file will persist the in-memory data to a file. This allows us to keep our data when we restart the server. 
-It also allows us to start our application with some testdata. We will create this file later on. Loopback won't give 
-any warning when this file is not available yet. 
+It also allows us to start our application with some testdata. 
+
+We will create this file later on. Loopback won't give any warning when this file is not available yet. 
 
 ## Models
-Loopback is designed around the concept of models. Let's create a model for our campground, `lb model`
+Loopback is designed around the concept of [models](https://loopback.io/doc/en/lb3/Defining-models.html). Let's create a model for our campground, `lb model`
 
 ```
 ? Enter the model name: campground
@@ -110,7 +111,9 @@ Enter an empty property name when done.
 
 We created the campground model and derived it from the PersistedModel, so we can save it to our 
 datasource. You can make a model common, which means that the same model can be shared between the client and the 
-server, but we decided to use it for the server only. Our model has 2 properties, a name and a location. 
+server, but we decided to use it for the server only. 
+
+Our model has 2 properties, a name and a location. 
 The id property is automatically included, so you don’t have to add it. 
 
 Visit the API explorer at http://localhost:3000/explorer. You'll see a lot of endpoints available for our 
