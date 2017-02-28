@@ -5,10 +5,10 @@
 
 In this post we will use version 3.4.0 to build an API for camping reservations:
 
-[DataModel](./datamodel.png)
+![DataModel](./datamodel.png)
 
 ## Getting Started
-Loopback comes with a []CLI tool](https://loopback.io/doc/en/lb3/Command-line-tools.html) to generate an application. 
+Loopback comes with a [CLI tool](https://loopback.io/doc/en/lb3/Command-line-tools.html) to generate an application. 
 You can configure everything manually, but the CLI tool is just a really handy gift to get you started. Install it via 
 the node package manager: `npm install -g loopback-cli`
 
@@ -56,5 +56,7 @@ reservations/
 ```
 
 Go to the reservations folder and start the application by running npm start. Open http://localhost:3000/explorer in
-your browser to see a basic [Swagger-UI](http://swagger.io/swagger-ui/)`
+your browser to see a basic [Swagger-UI](http://swagger.io/swagger-ui/)
+
+
 
