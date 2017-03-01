@@ -221,30 +221,30 @@ Let’s update our test data so we have a couple of reservations for our campgro
 Loopback endpoints can also be used to [query specific data](https://loopback.io/doc/en/lb3/Querying-data.html). 
 Here’s a selection of what is possible out of the box:
 
-- Show all campgrounds with ’KOA’ in there name
+- Show all campgrounds with ’KOA’ in there name  
   `/api/campgrounds?filter[where][name][like]=KOA`
 
-- Show all reservations after or on 2017–03–22
+- Show all reservations after or on 2017–03–22  
   `/api/reservations?filter[where][startDate][gte]=2017-03-22`
 
-- Show only the names of the campgrounds: 
+- Show only the names of the campgrounds:   
   `/api/campgrounds?filter[fields][name]=true`
 
-- Show everything but the names of the campgrounds:
+- Show everything but the names of the campgrounds:  
   `/api/campgrounds?filter[fields][name]`
 
-- Show campgrounds and include their reservations:
+- Show campgrounds and include their reservations:  
   `/api/campgrounds?filter[include][reservations]`
 
-- Show the first 2 campgrounds:
+- Show the first 2 campgrounds:  
   `/api/campgrounds?filter[limit]=2`
 
-- Show the next 2 campgrounds:
+- Show the next 2 campgrounds:  
   `/api/campgrounds?filter[skip]=2&filter[limit]=2`
 
-- Order campgrounds by name
+- Order campgrounds by name  
   `/api/campgrounds?filter[order]=name`
 
-- Descending order campgrounds by name 
+- Descending order campgrounds by name   
   `/api/campgrounds?filter[order]=name%20DESC`
 
