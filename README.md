@@ -196,11 +196,11 @@ Start the server again and go to the API Explorer. You will see some new endpoin
 
 Let’s update our test data so we have a couple of reservations for our campgrounds.
 
-```
+````
 {
   "ids": {
     "campground": 5,
-    "reservation": 2
+    "reservation": 3
   },
   "models": {
      "campground": {
@@ -215,7 +215,7 @@ Let’s update our test data so we have a couple of reservations for our campgro
      }
   }
 }
-```
+````
 
 ## Queries
 Loopback endpoints can also be used to [query specific data](https://loopback.io/doc/en/lb3/Querying-data.html). 
@@ -256,3 +256,37 @@ Imagine we are at Arches Nation Park and we want to search for all campgrounds w
 ```
 /api/campgrounds?filter[where][location][near]=38.7006538,-109.5643742&filter[where][location][maxDistance]=200
 ```
+
+## Validation
+When we created the campground model, we made both name required. If we try to create a campground without a name, 
+loopback will give us a validation error saying that the field cannot be blank. 
+
+Loopback also has some built-in 
+[validation methods](https://loopback.io/doc/en/lb2/Validating-model-data.html#using-validation-methods) for frequently 
+used validation. The name of our campground should have max. 100 characters. We can implement this by adding the 
+following code to server/models/campground.js:
+
+```
+'use strict';
+
+module.exports = function(Campground) {
+ Campground.validatesLengthOf('name', {max: 100, message: {max: 'Name is too long'}});
+};
+``` 
+
+You can also add your custom validation. For a reservation, the endDate should be after the startDate:
+
+```
+'use strict';
+
+module.exports = function(Reservation) {
+  Reservation.validate('startDate', dateValidator, {message: 'endDate should be after startDate'});
+    function dateValidator(err) {
+      if(this.startDate >= this.endDate) {
+        err();
+      }
+    }
+};
+```
+
+

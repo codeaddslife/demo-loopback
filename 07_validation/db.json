@@ -1,7 +1,7 @@
 {
   "ids": {
     "campground": 5,
-    "reservation": 3
+    "reservation": 7
   },
   "models": {
     "campground": {
@@ -12,7 +12,11 @@
     },
     "reservation": {
       "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"id\":1}",
-      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"id\":2}"
+      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"id\":2}",
+      "3": "{\"startDate\":\"2017-03-01T06:15:06.187Z\",\"endDate\":\"2017-03-01T06:15:06.187Z\",\"campgroundId\":1,\"id\":3}",
+      "4": "{\"startDate\":\"2017-03-01T06:15:06.187Z\",\"endDate\":\"2017-03-01T06:15:06.187Z\",\"campgroundId\":1,\"id\":4}",
+      "5": "{\"startDate\":\"2017-03-01T06:15:06.187Z\",\"endDate\":\"2017-03-01T06:16:06.187Z\",\"campgroundId\":1,\"id\":5}",
+      "6": "{\"startDate\":\"2017-03-01T06:15:06.187Z\",\"endDate\":\"2017-03-01T06:16:06.187Z\",\"campgroundId\":1,\"id\":6}"
     }
   }
 }

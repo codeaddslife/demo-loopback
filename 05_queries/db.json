@@ -1,7 +1,7 @@
 {
   "ids": {
     "campground": 5,
-    "reservation": 2
+    "reservation": 3
   },
   "models": {
     "campground": {
