@@ -245,6 +245,6 @@ Here’s a selection of what is possible out of the box:
 - Order campgrounds by name  
   `/api/campgrounds?filter[order]=name`
 
-- Descending order campgrounds by name   
+- Descending order campgrounds by name:  
   `/api/campgrounds?filter[order]=name%20DESC`
 
