@@ -258,7 +258,7 @@ Imagine we are at Arches Nation Park and we want to search for all campgrounds w
 ```
 
 ## Validation
-When we created the campground model, we made both name required. If we try to create a campground without a name, 
+When we created the campground model, we made the name required. If we try to create a campground without a name, 
 loopback will give us a validation error saying that the field cannot be blank. 
 
 Loopback also has some built-in 
@@ -274,7 +274,7 @@ module.exports = function(Campground) {
 };
 ``` 
 
-You can also add your custom validation. For a reservation, the endDate should be after the startDate:
+You can also add custom validation. For a reservation, the endDate should be after the startDate:
 
 ```
 'use strict';
