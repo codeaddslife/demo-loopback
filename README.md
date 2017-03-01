@@ -288,5 +288,3 @@ module.exports = function(Reservation) {
     }
 };
 ```
-
-
