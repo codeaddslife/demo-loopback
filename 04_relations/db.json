@@ -1,0 +1,18 @@
+{
+  "ids": {
+    "campground": 5,
+    "reservation": 2
+  },
+  "models": {
+    "campground": {
+      "1": "{\"name\":\"Salt Lake City KOA\",\"location\":{\"lat\": 40.772112, \"lng\": -111.932165},\"id\":1}",
+      "2": "{\"name\":\"Gouldings Campground\",\"location\":{\"lat\": 37.006989, \"lng\": -110.214907},\"id\":2}",
+      "3": "{\"name\":\"Grand Canyon Mather Campground\",\"location\":{\"lat\": 36.056472, \"lng\": -112.140728},\"id\":3}",
+      "4": "{\"name\":\"Camping Paris Bois de Boulogne\",\"location\":{\"lat\": 48.868879, \"lng\": 2.234914},\"id\":4}"
+    },
+    "reservation": {
+      "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"id\":1}",
+      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"id\":2}"
+    }
+  }
+}

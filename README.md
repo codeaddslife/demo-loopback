@@ -3,7 +3,7 @@
 [Strongloop](http://strongloop.com). It allows you to setup a REST API in minutes and is based on 
 [Express]((http://expressjs.com)). 
 
-In this post we will use version 3.4.0 to build an API for camping reservations:
+Here we will use version 3.4.0 to build an API for camping reservations:
 
 ![DataModel](./datamodel.png)
 
@@ -73,7 +73,7 @@ Connector-specific configuration:
 ```
 
 The db.json file will persist the in-memory data to a file. This allows us to keep our data when we restart the server. 
-It also allows us to start our application with some testdata. 
+It also allows us to start our application with some test data. 
 
 We will create this file later on. Loopback won't give any warning when this file is not available yet. 
 
@@ -177,3 +177,43 @@ Let's add another reservation property.
 Enter an empty property name when done.
 ? Property name: 
 ```
+
+## Relations
+Campgrounds can have zero or more reservations. We have to create a 
+[relationship between our models](https://loopback.io/doc/en/lb3/Define-model-relations.html) to accomplish this, `lb 
+relation`:
+
+```
+? Select the model to create the relationship from: campground
+? Relation type: has many
+? Choose a model to create a relationship with: reservation
+? Enter the property name for the relation: reservations
+? Optionally enter a custom foreign key: 
+? Require a through model? No
+```
+
+Start the server again and go to the API Explorer. You will see some new endpoints for /campgrounds/{id}/reservations. 
+Let’s update our test data so we have a couple of reservations for our campgrounds.
+
+```
+{
+  "ids": {
+    "campground": 5,
+    "reservation": 2
+  },
+  "models": {
+     "campground": {
+       "1": "{\"name\":\"Salt Lake City KOA\",\"location\":{\"lat\": 40.772112, \"lng\": -111.932165},\"id\":1}",
+       "2": "{\"name\":\"Gouldings Campground\",\"location\":{\"lat\": 37.006989, \"lng\": -110.214907},\"id\":2}",
+       "3": "{\"name\":\"Grand Canyon Mather Campground\",\"location\":{\"lat\": 36.056472, \"lng\": -112.140728},\"id\":3}",
+       "4": "{\"name\":\"Camping Paris Bois de Boulogne\",\"location\":{\"lat\": 48.868879, \"lng\": 2.234914},\"id\":4}"
+     },
+     "reservation": {
+       "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"id\":1}",
+       "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"id\":2}"
+     }
+  }
+}
+```
+
+
