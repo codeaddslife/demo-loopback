@@ -250,8 +250,8 @@ Here’s a selection of what is possible out of the box:
 
 ## Geolocation
 You can also query based on geolocation. The location of our campground is a 
-[geopoint](https://loopback.io/doc/en/lb3/Geotype.html). Imagine we are at Arches Nation Park and we want to search for 
-all campgrounds within a 200 mile radius:
+[geopoint](https://loopback.io/doc/en/lb3/Geotype.html).   
+Imagine we are at Arches Nation Park and we want to search for all campgrounds within a 200 mile radius:
 
 ```
 /api/campgrounds?filter[where][location][near]=38.7006538,-109.5643742&filter[where][location][maxDistance]=200
