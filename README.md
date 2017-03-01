@@ -227,7 +227,7 @@ Here’s a selection of what is possible out of the box:
 - Show all reservations after or on 2017–03–22  
   `/api/reservations?filter[where][startDate][gte]=2017-03-22`
 
-- Show only the names of the campgrounds:   
+- Show only the names of the campgrounds:  
   `/api/campgrounds?filter[fields][name]=true`
 
 - Show everything but the names of the campgrounds:  
