@@ -490,3 +490,12 @@ And as a last rule, allow administrators to do and see all, `lb acl`:
 ? Enter the role name: admin
 ? Select the permission to apply Explicitly grant access
 ```
+
+Start your server and go to http://localhost:3000/api/campgrounds. As an anonymous user I can still see all campgrounds. 
+When I go to http://localhost:3000/api/reservations, I get a 401 Authorization Required.  
+
+We will now log in as Kenneth to see his reservations. Go to http://localhost:3000/explorer/#!/customer/customer_login 
+and log in: 
+
+![Login](./login.png)
+ 
