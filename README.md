@@ -1,4 +1,4 @@
-# Developing a REST API with Loopback
+# Developing a complete REST API with Loopback
 [Loopback](http://loopback.io) was created as an open source mobile backend-as-a-service framework by 
 [Strongloop](http://strongloop.com). It allows you to setup a REST API in minutes and is based on 
 [Express]((http://expressjs.com)). 
@@ -395,5 +395,98 @@ We will now add 3 users to application:
 The passwords need to be hashed in the db.json file. We also link our reservations to our customers.
 
 ```
-
+{
+  "ids": {
+    "campground": 5,
+    "reservation": 3,
+    "customer": 4,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1
+  },
+  "models": {
+    "campground": {
+      "1": "{\"name\":\"Salt Lake City KOA\",\"location\":{\"lat\": 40.772112, \"lng\": -111.932165},\"id\":1}",
+      "2": "{\"name\":\"Gouldings Campground\",\"location\":{\"lat\": 37.006989, \"lng\": -110.214907},\"id\":2}",
+      "3": "{\"name\":\"Grand Canyon Mather Campground\",\"location\":{\"lat\": 36.056472, \"lng\": -112.140728},\"id\":3}",
+      "4": "{\"name\":\"Camping Paris Bois de Boulogne\",\"location\":{\"lat\": 48.868879, \"lng\": 2.234914},\"id\":4}"
+    },
+    "reservation": {
+      "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"customerId\":2,\"id\":1}",
+      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"customerId\":3,\"id\":2}"
+    },
+    "customer": {
+      "1": "{\"name\":\"Andy Van Den Heuvel\",\"username\":\"andy\",\"password\":\"$2a$10$1lmPRI0Xjd5fU8HGdPmDoOkZpIPJj2axcdJYIfc/3RUnBDDqQe31K\",\"email\":\"andy@optis.be\",\"id\":1}",
+      "2": "{\"name\":\"Kenneth Van den Berghe\",\"username\":\"kenneth\",\"password\":\"$2a$10$H5wtnFvhxf8CPn66gEbPu.tki2WRpkplqvUV3yhQ049ugY8rHFSJi\",\"email\":\"kenneth@optis.be\",\"id\":2}",
+      "3": "{\"name\":\"Claudiu Matei\",\"username\":\"claudiu\",\"password\":\"$2a$10$6b9jxIwb6y84gpq.ZU57YegRM4BWxHoXc.K/WwlEOJTa/9fO7cCta\",\"email\":\"claudiu@optis.be\",\"id\":3}"
+    },
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {
+      "1": "{\"principalType\":\"USER\",\"principalId\":\"1\",\"roleId\":1,\"id\":1}"
+    },
+    "Role": {
+      "1": "{\"name\":\"admin\",\"created\":\"2017-02-21T06:07:25.571Z\",\"modified\":\"2017-02-21T06:07:25.571Z\",\"id\":1}"
+    }
+  }
+}
 ``` 
+
+We will now activate our authentication. To do this, we must add a 
+[bootscript](https://loopback.io/doc/en/lb3/Defining-boot-scripts.html). Create a new file 
+server/boot/authentication.js with the following content and restart your server afterwards. 
+
+```
+'use strict';
+
+module.exports = function enableAuthentication(server) {
+  server.enableAuth();
+};
+```
+
+Authentication is now enabled, but all endpoints are still public because we haven't configured any authorization. 
+Loopback uses [access control lists](https://loopback.io/doc/en/lb3/Controlling-data-access.html) for this. Let's add 
+some rules here.
+
+First deny all access to everybody, `lb acl`:
+
+```
+? Select the model to apply the ACL entry to: (all existing models)
+? Select the ACL scope: All methods and properties
+? Select the access type: All (match all types)
+? Select the role All users
+? Select the permission to apply Explicitly deny access
+```
+
+Now allow everybody to view the campgrounds, `lb acl`
+
+```
+? Select the model to apply the ACL entry to: campground
+? Select the ACL scope: All methods and properties
+? Select the access type: Read
+? Select the role All users
+? Select the permission to apply Explicitly grant access
+
+```
+
+Also, allow every customer to see his/her own reservations, `lb acl`:
+
+```
+? Select the model to apply the ACL entry to: reservation
+? Select the ACL scope: All methods and properties
+? Select the access type: All (match all types)
+? Select the role The user owning the object
+? Select the permission to apply Explicitly grant access
+```
+
+And as a last rule, allow administrators to do and see all, `lb acl`: 
+
+```
+? Select the model to apply the ACL entry to: (all existing models)
+? Select the ACL scope: All methods and properties
+? Select the access type: All (match all types)
+? Select the role other
+? Enter the role name: admin
+? Select the permission to apply Explicitly grant access
+```
