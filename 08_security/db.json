@@ -1,0 +1,36 @@
+{
+  "ids": {
+    "campground": 5,
+    "reservation": 3,
+    "customer": 4,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1
+  },
+  "models": {
+    "campground": {
+      "1": "{\"name\":\"Salt Lake City KOA\",\"location\":{\"lat\": 40.772112, \"lng\": -111.932165},\"id\":1}",
+      "2": "{\"name\":\"Gouldings Campground\",\"location\":{\"lat\": 37.006989, \"lng\": -110.214907},\"id\":2}",
+      "3": "{\"name\":\"Grand Canyon Mather Campground\",\"location\":{\"lat\": 36.056472, \"lng\": -112.140728},\"id\":3}",
+      "4": "{\"name\":\"Camping Paris Bois de Boulogne\",\"location\":{\"lat\": 48.868879, \"lng\": 2.234914},\"id\":4}"
+    },
+    "reservation": {
+      "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"customerId\":2,\"id\":1}",
+      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"customerId\":3,\"id\":2}"
+    },
+    "customer": {
+      "1": "{\"name\":\"Andy Van Den Heuvel\",\"username\":\"andy\",\"password\":\"$2a$10$1lmPRI0Xjd5fU8HGdPmDoOkZpIPJj2axcdJYIfc/3RUnBDDqQe31K\",\"email\":\"andy@optis.be\",\"id\":1}",
+      "2": "{\"name\":\"Kenneth Van den Berghe\",\"username\":\"kenneth\",\"password\":\"$2a$10$H5wtnFvhxf8CPn66gEbPu.tki2WRpkplqvUV3yhQ049ugY8rHFSJi\",\"email\":\"kenneth@optis.be\",\"id\":2}",
+      "3": "{\"name\":\"Claudiu Matei\",\"username\":\"claudiu\",\"password\":\"$2a$10$6b9jxIwb6y84gpq.ZU57YegRM4BWxHoXc.K/WwlEOJTa/9fO7cCta\",\"email\":\"claudiu@optis.be\",\"id\":3}"
+    },
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {
+      "1": "{\"principalType\":\"USER\",\"principalId\":\"1\",\"roleId\":1,\"id\":1}"
+    },
+    "Role": {
+      "1": "{\"name\":\"admin\",\"created\":\"2017-02-21T06:07:25.571Z\",\"modified\":\"2017-02-21T06:07:25.571Z\",\"id\":1}"
+    }
+  }
+}

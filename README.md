@@ -288,3 +288,112 @@ module.exports = function(Reservation) {
     }
 };
 ```
+
+## Security
+All our endpoints are public. We should add some security here. Our example will have 3 types of users. Anonymous 
+users should be able to see all campgrounds. When they register, they will become customers who can make reservations 
+and can see only there own reservations. 
+
+Administrators should be able to see and do anything. Loopback has 
+[built-in models](http://loopback.io/doc/en/lb3/Using-built-in-models.html) for security, but it is advised not to use 
+them directly. We will create a customer model that extends from the User model. `lb model`:
+
+```
+? Enter the model name: customer
+? Select the data-source to attach customer to: reservationDS (memory)
+? Select model's base class User
+? Expose customer via the REST API? Yes
+? Custom plural form (used to build REST URL): 
+? Common model or server only? server
+Let's add some customer properties now.
+Enter an empty property name when done.
+? Property name: name
+   invoke   loopback:property
+? Property type: string
+? Required? No
+? Default value[leave blank for none]:
+Let's add another customer property.
+Enter an empty property name when done.
+? Property name:
+lb relation naar reservations
+``` 
+
+Customers can have zero or more reservations. Let's create a relation here, `lb relation`:
+
+```
+? Select the model to create the relationship from: customer
+? Relation type: has many
+? Choose a model to create a relationship with: reservation
+? Enter the property name for the relation: reservations
+? Optionally enter a custom foreign key: 
+? Require a through model? No
+```
+
+Since we started from an empty server, the built-in models are not defined in server/model-config.json. Let's add those 
+now. 
+
+Setting the 'public' property to false means that they will not be public and will not be shown in our API explorer.
+
+```
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "campground": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "reservation": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "customer": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "User": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "reservationDS",
+    "public": false
+  }
+}
+```
+
+
+We will now add 3 users to application: 
+
+- Andy, our administrator : (username: andy, password: andy)
+- Kenneth, a customer : (username: kenneth, password: kenneth)
+- Claudiu, another customer: (username: claudiu, password: claudiu)
+
+The passwords need to be hashed in the db.json file. We also link our reservations to our customers.
+
+```
+
+``` 
