@@ -3,7 +3,7 @@
     "campground": 5,
     "reservation": 3,
     "customer": 4,
-    "AccessToken": 3,
+    "AccessToken": 4,
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1
@@ -25,8 +25,9 @@
       "3": "{\"name\":\"Claudiu Matei\",\"username\":\"claudiu\",\"password\":\"$2a$10$6b9jxIwb6y84gpq.ZU57YegRM4BWxHoXc.K/WwlEOJTa/9fO7cCta\",\"email\":\"claudiu@optis.be\",\"id\":3}"
     },
     "AccessToken": {
-      "MLQGaOax63joinnuG3okzW55blgCEVoqjasTAjgacvpDKUSaoQZXlGJH1w6yKXBD": "{\"id\":\"MLQGaOax63joinnuG3okzW55blgCEVoqjasTAjgacvpDKUSaoQZXlGJH1w6yKXBD\",\"ttl\":1209600,\"created\":\"2017-03-02T05:52:16.092Z\",\"userId\":2}",
-      "nMasaRRUTJ4VvGhzGBlD4Eif6vHpp2bHuk3aWsiE1gWCYMik5fc51oyXbpg70693": "{\"id\":\"nMasaRRUTJ4VvGhzGBlD4Eif6vHpp2bHuk3aWsiE1gWCYMik5fc51oyXbpg70693\",\"ttl\":1209600,\"created\":\"2017-03-02T05:53:05.759Z\",\"userId\":2}"
+      "XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv": "{\"id\":\"XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv\",\"ttl\":1209600,\"created\":\"2017-03-03T04:58:34.957Z\",\"userId\":2}",
+      "v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx": "{\"id\":\"v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx\",\"ttl\":1209600,\"created\":\"2017-03-03T05:10:13.430Z\",\"userId\":3}",
+      "okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe": "{\"id\":\"okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe\",\"ttl\":1209600,\"created\":\"2017-03-03T05:11:28.105Z\",\"userId\":1}"
     },
     "ACL": {},
     "RoleMapping": {

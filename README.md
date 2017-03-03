@@ -306,17 +306,18 @@ them directly. We will create a customer model that extends from the User model.
 ? Custom plural form (used to build REST URL): 
 ? Common model or server only? server
 Let's add some customer properties now.
+
 Enter an empty property name when done.
 ? Property name: name
    invoke   loopback:property
 ? Property type: string
 ? Required? No
-? Default value[leave blank for none]:
+? Default value[leave blank for none]: 
+
 Let's add another customer property.
 Enter an empty property name when done.
-? Property name:
-lb relation naar reservations
-``` 
+? Property name: 
+```
 
 Customers can have zero or more reservations. Let's create a relation here, `lb relation`:
 
@@ -385,11 +386,10 @@ Setting the 'public' property to false means that they will not be public and wi
 }
 ```
 
-
 We will now add 3 users to application: 
 
-- Andy, our administrator : (username: andy, password: andy)
-- Kenneth, a customer : (username: kenneth, password: kenneth)
+- Andy, our administrator : (username: andy, password: andy)
+- Kenneth, a customer : (username: kenneth, password: kenneth)
 - Claudiu, another customer: (username: claudiu, password: claudiu)
 
 The passwords need to be hashed in the db.json file. We also link our reservations to our customers.
@@ -470,10 +470,10 @@ Now allow everybody to view the campgrounds, `lb acl`
 
 ```
 
-Also, allow every customer to see his/her own reservations, `lb acl`:
+Also, allow every customer to their own info, `lb acl`:
 
 ```
-? Select the model to apply the ACL entry to: reservation
+? Select the model to apply the ACL entry to: customer
 ? Select the ACL scope: All methods and properties
 ? Select the access type: All (match all types)
 ? Select the role The user owning the object
@@ -498,4 +498,30 @@ We will now log in as Kenneth to see his reservations. Go to http://localhost:30
 and log in: 
 
 ![Login](./login.png)
+
+The id of the response is a generated access token. You can now copy it and set it in the header to provide the access 
+token for all calls in the API Explorer. 
+
+![Login](./token.png)
+
+Or you can add the access token as a request parameter. Let's try this out. 
+
+
+- As Kenneth, I can see my own reservations: 
+  `/api/customers/2/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv
+
+- Asking Claudiu's reservations results in an 401 unauthorized: 
+  `/api/customers/3/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv`
+  
+- As Claudiu, I can see my own reservation: 
+  `/api/customers/3/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
+  
+- But I can't see Kenneth's reservations:
+  `/api/customers/2/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
+  
+- As Andy, I can Kenneth's reservations: 
+  `/api/customers/2/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
+  
+- And also Claudiu's reservations: 
+  `/api/customers/3/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
  
