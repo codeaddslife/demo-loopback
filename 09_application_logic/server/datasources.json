@@ -1,0 +1,22 @@
+{
+  "reservationDS": {
+    "name": "reservationDS",
+    "localStorage": "",
+    "file": "db.json",
+    "connector": "memory"
+  },
+  "emailDS": {
+    "name": "mail",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "auth": {
+        "user": "YOUR_USER",
+        "pass": "YOUR_PASSWORD"
+      }
+    }]
+  }
+}

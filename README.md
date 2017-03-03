@@ -521,4 +521,124 @@ Or you can add the access token as a request parameter. Let's try this out.
   
 - As Andy you can also see all reservations: `/api/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
    
+# Application logic
+Up to this point, we were able to build a fully functioning REST API, mostly from generating code. But more advanced 
+applications will almost always need some extra application logic. 
+
+Loopback allows you to add remote methods, remote hooks and operation hooks. Remote hooks and operation hooks are 
+practically the same. The difference is that operational hooks are more high-level defined, whereas remote hooks are 
+more specific to an endpoint.
  
+In our example, we want to send a verification email when a customer has made a reservation. Loopback has an [email 
+connector](https://loopback.io/doc/en/lb3/Email-connector.html) available based on [Nodemailer](https://nodemailer.com)
+
+
+Go to server/datasources.json and add the email configuration. I used gmail for this:
+
+```
+"email": {
+    "name": "mail",
+    "defaultForType": "mail",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "auth": {
+        "user": "YOUR_USER",
+        "pass": "YOUR_PASSWORD"
+      }
+    }]
+  }
+```
+
+Now we bind the datasource in server/models-config:
+
+```
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "campground": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "reservation": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "customer": {
+    "dataSource": "reservationDS",
+    "public": true
+  },
+  "User": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "reservationDS",
+    "public": false
+  },
+  "Email": {
+    "dataSource": "emailDS"
+  }
+}
+``` 
+
+Go to server/models/reservation.js and add the logic to send and email after save:
+
+```
+'use strict';
+
+module.exports = function (Reservation) {
+  Reservation.validate('startDate', dateValidator, {message: 'endDate should be after startDate'});
+  function dateValidator(err) {
+    if (this.startDate >= this.endDate) {
+      err();
+    }
+  }
+
+  Reservation.observe("after save", function (ctx, next) {
+    Reservation.app.models.Campground.findById(ctx.instance.campgroundId, function (err, campground) {
+      Reservation.app.models.Email.send({
+        to: 'andy@optis.be',
+        from: 'noreply@optis.be',
+        subject: 'Thank you for your reservation at ' + campground.name,
+        html: '<p>We confirm your reservation for <strong>' + campground.name + '</strong></p>'
+      }, function (err, mail) {
+        console.log('email sent!');
+      });
+    });
+    next();
+  });
+
+};
+```
+
+
+
+
