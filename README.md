@@ -536,9 +536,15 @@ connector](https://loopback.io/doc/en/lb3/Email-connector.html) available based 
 Go to server/datasources.json and add the email configuration. I used gmail for this:
 
 ```
-"email": {
+{
+  "reservationDS": {
+    "name": "reservationDS",
+    "localStorage": "",
+    "file": "db.json",
+    "connector": "memory"
+  },
+  "emailDS": {
     "name": "mail",
-    "defaultForType": "mail",
     "connector": "mail",
     "transports": [{
       "type": "SMTP",
@@ -551,9 +557,10 @@ Go to server/datasources.json and add the email configuration. I used gmail for 
       }
     }]
   }
+}
 ```
 
-Now we bind the datasource in server/models-config:
+Now we bind the datasource in server/models-config.js:
 
 ```
 {
