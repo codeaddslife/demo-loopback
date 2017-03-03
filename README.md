@@ -507,25 +507,18 @@ token for all calls in the API Explorer.
 Or you can add the access token as a request parameter. Let's try this out. 
 
 
-- As Kenneth, I can see my own reservations:  
-  `/api/customers/2/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv
+- As Kenneth, I can see my own reservations: `/api/customers/2/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv`
 
-- Asking Claudiu's reservations results in an 401 unauthorized:  
-  `/api/customers/3/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv`
+- Asking Claudiu's reservations results in an 401 unauthorized: `/api/customers/3/reservations?access_token=XMFN5GsykpxFokvWsXRYtKZidlJYKyClvak0KmEn87LisnFYSQ9TzmrBcz9GFrHv`
   
-- As Claudiu, I can see my own reservation:   
-  `/api/customers/3/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
+- As Claudiu, I can see my own reservation: `/api/customers/3/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
   
-- But I can't see Kenneth's reservations:  
-  `/api/customers/2/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
+- But I can't see Kenneth's reservations: `/api/customers/2/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
   
-- As Andy, I can Kenneth's reservations:   
-  `/api/customers/2/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
+- As Andy, I can Kenneth's reservations: `/api/customers/2/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
   
-- And also Claudiu's reservations:   
-  `/api/customers/3/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
+- And also Claudiu's reservations: `/api/customers/3/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
   
-- As Andy you can also see all reservations:
-  `/api/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
+- As Andy you can also see all reservations: `/api/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
    
  
