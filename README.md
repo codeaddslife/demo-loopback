@@ -712,7 +712,7 @@ Create the server/files/photos folder, so we can upload some photos to it and st
 API explorer, you can see the /containers endpoint, but we haven't created any containers yet. For this part, we are 
 going to use curl.
 
-First create the container 'photos':
+Create the container 'photos':
 
 ```
 curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/containers/photos'
