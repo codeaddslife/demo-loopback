@@ -1,0 +1,6 @@
+{
+  "extends": "loopback",
+  "rules": {
+    "max-len": 0
+  }
+}

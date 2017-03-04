@@ -692,7 +692,7 @@ We use our local filesystem as the provider here, but the storage component uses
 [pkgcloud](https://github.com/pkgcloud/pkgcloud) to support multiple cloud providers (Amazon, Azure, Google, HP, 
 Openstack, Rackspace)
 
-Loopback keeps files in containers. We have to make a container model so we can create a container for our photos: 
+Loopback keeps files in containers. We have to make a container model so we can create a container for our photos, 
 `lb model`: 
 
 ```
@@ -718,17 +718,99 @@ Create the container 'photos':
 curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/containers/photos'
 ```
 
-Upload to the 'photos'-container
+Upload to the 'photos'-container:
 
 ```
 curl -F "image=@image.jpg" http://localhost:3000/api/containers/photos/upload
 ```
 
-Download from the 'photos'-container
+Download from the 'photos'-container:
 
 ```
 http://localhost:3000/api/containers/photos/download/image.jpg
 ```
+
+## Testing
+We are almost ready, but we want to ensure we can test our endpoints. 
+We will use [mocha](http://mochajs.org), [chai](http://chaijs.com) and [chai-http](http://chaijs.com/plugins/chai-http) 
+for this. 
+
+If you haven't mocha on your machine. Install it globally via npm 
+
+```
+npm install -g mocha
+``` 
+
+Then install chai and chai-http for the project:
+
+```
+npm install chai chai-http --save-dev
+```
+
+We can now write a test at test/campground.js. I haven't written the complete testsuite here, just a few tests so you 
+get the idea. chai will make sure that the server is started before we do the request, and stopped after the test.
+
+```
+'use strict';
+
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var server = require('../server/server');
+var should = chai.should();
+
+chai.use(chaiHttp);
+
+describe('Campgrounds', function() {
+  it('should show all campgrounds on GET /api/campgrounds', function(done) {
+    chai.request(server)
+      .get('/api/campgrounds')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body.should.have.lengthOf(4);
+        done();
+      });
+  });
+
+  it('should show only the names of the campgrounds on GET /api/campgrounds?filter[fields][name]=true', function(done) {
+    chai.request(server)
+      .get('/api/campgrounds?filter[fields][name]=true')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body[0].should.have.property('name');
+        res.body[0].should.not.have.property('id');
+        done();
+      });
+  });
+
+  it('should show the first 2 campgrounds on GET /api/campgrounds?filter[limit]=2', function(done) {
+    chai.request(server)
+      .get('/api/campgrounds?filter[limit]=2')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body.should.have.lengthOf(2);
+        res.body[0].name.should.equal('Salt Lake City KOA');
+        res.body[1].name.should.equal('Gouldings Campground');
+        done();
+      });
+  });
+
+  it('should show the last 2 campgrounds on GET /api/campgrounds?filter[skip]=2&filter[limit]=2', function(done) {
+    chai.request(server)
+      .get('/api/campgrounds?filter[skip]=2&filter[limit]=2')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body.should.have.lengthOf(2);
+        res.body[0].name.should.equal('Grand Canyon Mather Campground');
+        res.body[1].name.should.equal('Camping Paris Bois de Boulogne');
+        done();
+      });
+  });
+});
+```
+
+Ok, we're almost done now. Last stop: Deploy to Production.
+
+## Deployment
 
 
 
