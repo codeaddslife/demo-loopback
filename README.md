@@ -816,16 +816,15 @@ Ok, we're almost done now. Last stop: Deploy to Production.
 
 ## Deployment
 In order to go to production, we need some 
-[Environment-specific configuration](https://loopback.io/doc/en/lb3/Environment-specific-configuration.html) 
+[Environment-specific configuration](https://loopback.io/doc/en/lb3/Environment-specific-configuration.html).
 
 Loopback has naming conventions for this. For security reasons, we don't want to show the API explorer when running in 
-production. Create a file named /server/componenet-config.prod.json
+production. Create a file named /server/component-config.prod.json
 
 ```
 {
   "loopback-component-explorer": null
 }
-
 ```
 
 We also don't want to work against an in-memory database. We will switch to mongoDB here. 
@@ -849,8 +848,8 @@ Create a new file called server/datasources.prod.json and add your mongodb setti
 ```
 {
   "reservationDS": {
-    "host": "ds039880.mlab.com",
-    "port": 39880,
+    "host": "YOUR_HOST",
+    "port": 0,
     "url":  false,
     "database": "reservations",
     "name": "reservations",
@@ -868,7 +867,8 @@ Loopback uses NODE_ENV to decide what config should be loaded. Let's change our 
 export NODE_ENV="prod"
 ```
 
-Loopback will now use our new configuration. Our explorer is disabled and we can still use are api: 
+Loopback will now use our new configuration. Our explorer is disabled and we can still use are api, this time through 
+MongoDB: 
 
 ```
 http://localhost:3000/api/campgrounds

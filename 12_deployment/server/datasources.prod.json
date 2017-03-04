@@ -1,7 +1,7 @@
 {
   "reservationDS": {
-    "host": "ds039880.mlab.com",
-    "port": 39880,
+    "host": "YOUR_HOST",
+    "port": 0,
     "url":  false,
     "database": "reservations",
     "name": "reservations",
