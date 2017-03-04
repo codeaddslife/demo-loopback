@@ -808,6 +808,10 @@ describe('Campgrounds', function() {
 });
 ```
 
+Run the command `mocha` now and you should see all tests passing: 
+
+![testing](./testing.png)
+
 Ok, we're almost done now. Last stop: Deploy to Production.
 
 ## Deployment
