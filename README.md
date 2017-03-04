@@ -521,7 +521,7 @@ Or you can add the access token as a request parameter. Let's try this out.
   
 - As Andy you can also see all reservations: `/api/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
    
-# Application logic
+## Application logic
 Up to this point, we were able to build a fully functioning REST API, mostly from generating code. But more advanced 
 applications will almost always need some extra application logic. 
 
@@ -645,6 +645,95 @@ module.exports = function (Reservation) {
 
 };
 ```
+
+## Storage
+If you are interested in uploading/downloading files from your API, you can use Loopback's 
+[Storage Component](https://loopback.io/doc/en/lb3/Storage-component.html)
+
+For this, you need to install the storage component via NPM:
+
+```
+npm install loopback-component-storage --save
+```
+
+Just like with emails, the storage component is called a datasource. Let's add it to server/datasources.json
+
+```
+{
+  "reservationDS": {
+    "name": "reservationDS",
+    "localStorage": "",
+    "file": "db.json",
+    "connector": "memory"
+  },
+  "emailDS": {
+    "name": "mail",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "auth": {
+        "user": "YOUR_USER",
+        "pass": "YOUR_PASSWORD"
+      }
+    }]
+  },
+  "photos": {
+    "name": "photos",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/files"
+  }
+}
+```
+
+We use our local filesystem as the provider here, but the storage component uses [pkgcloud](https://github.com/pkgcloud/pkgcloud)  
+to support multiple cloud providers (Amazon, Azure, Google, HP, Openstack, Rackspace)
+
+
+
+Loopback keeps files in containers. We have to make a container model so we can create a container for our photos: 
+`lb model`: 
+
+```
+? Enter the model name: container
+? Select the data-source to attach container to: photos (loopback-component-storage)
+? Select model's base class Model
+? Expose container via the REST API? Yes
+? Custom plural form (used to build REST URL): 
+? Common model or server only? server
+Let's add some container properties now.
+
+Enter an empty property name when done.
+? Property name: 
+```
+
+Create the server/files/photos folder, so we can upload some photos to it and start your server. When you go to the 
+API explorer, you can see the /containers endpoint, but we haven't created any containers yet. For this part, we are 
+going to use curl.
+
+First create the container 'photos':
+
+```
+curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/containers/x'
+```
+
+Upload to the 'photos'-container
+
+```
+curl -F "image=@image.jpg" http://localhost:3000/api/containers/photos/upload
+```
+
+Download from the 'photos'-container
+
+```
+http://localhost:3000/api/containers/photos/download/image.jpg
+```
+
+
+
 
 
 
