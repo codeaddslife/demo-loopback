@@ -648,9 +648,8 @@ module.exports = function (Reservation) {
 
 ## Storage
 If you are interested in uploading/downloading files from your API, you can use Loopback's 
-[Storage Component](https://loopback.io/doc/en/lb3/Storage-component.html)
-
-For this, you need to install the storage component via NPM:
+[Storage Component](https://loopback.io/doc/en/lb3/Storage-component.html). For this, you need to install the storage 
+component via NPM:
 
 ```
 npm install loopback-component-storage --save
@@ -689,10 +688,9 @@ Just like with emails, the storage component is called a datasource. Let's add i
 }
 ```
 
-We use our local filesystem as the provider here, but the storage component uses [pkgcloud](https://github.com/pkgcloud/pkgcloud)  
-to support multiple cloud providers (Amazon, Azure, Google, HP, Openstack, Rackspace)
-
-
+We use our local filesystem as the provider here, but the storage component uses 
+[pkgcloud](https://github.com/pkgcloud/pkgcloud) to support multiple cloud providers (Amazon, Azure, Google, HP, 
+Openstack, Rackspace)
 
 Loopback keeps files in containers. We have to make a container model so we can create a container for our photos: 
 `lb model`: 
@@ -717,7 +715,7 @@ going to use curl.
 First create the container 'photos':
 
 ```
-curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/containers/x'
+curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/containers/photos'
 ```
 
 Upload to the 'photos'-container
