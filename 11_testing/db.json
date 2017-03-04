@@ -17,41 +17,14 @@
     },
     "reservation": {
       "1": "{\"startDate\":\"2017-03-21\",\"endDate\":\"2017-03-23\",\"campgroundId\":1,\"customerId\":2,\"id\":1}",
-      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"customerId\":3,\"id\":2}",
-      "3": "{\"startDate\":\"2017-03-03T06:23:56.961Z\",\"endDate\":\"2017-03-04T06:23:56.961Z\",\"campgroundId\":1,\"customerId\":2,\"id\":3}",
-      "4": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":4}",
-      "5": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":5}",
-      "6": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":6}",
-      "7": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":7}",
-      "8": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":8}",
-      "9": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":9}",
-      "10": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":10}",
-      "11": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":11}",
-      "12": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":12}",
-      "13": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":13}",
-      "14": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":14}",
-      "15": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":15}",
-      "16": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":16}",
-      "17": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":17}",
-      "18": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":18}",
-      "19": "{\"startDate\":\"2017-03-03T15:43:28.631Z\",\"endDate\":\"2017-03-04T15:43:28.631Z\",\"campgroundId\":1,\"customerId\":2,\"id\":19}",
-      "20": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":20}",
-      "21": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":21}",
-      "22": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":22}",
-      "23": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":23}",
-      "24": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":24}",
-      "25": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"id\":25}",
-      "26": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"customerId\":2,\"campground\":1,\"id\":26}",
-      "27": "{\"startDate\":\"2017-03-03T18:02:07.738Z\",\"endDate\":\"2017-03-09T16:02:07.738Z\",\"campgroundId\":1,\"customerId\":2,\"id\":27}"
-    },
+      "2": "{\"startDate\":\"2017-03-25\",\"endDate\":\"2017-03-31\",\"campgroundId\":2,\"customerId\":3,\"id\":2}"
+     },
     "customer": {
       "1": "{\"name\":\"Andy Van Den Heuvel\",\"username\":\"andy\",\"password\":\"$2a$10$1lmPRI0Xjd5fU8HGdPmDoOkZpIPJj2axcdJYIfc/3RUnBDDqQe31K\",\"email\":\"andy@optis.be\",\"id\":1}",
       "2": "{\"name\":\"Kenneth Van den Berghe\",\"username\":\"kenneth\",\"password\":\"$2a$10$H5wtnFvhxf8CPn66gEbPu.tki2WRpkplqvUV3yhQ049ugY8rHFSJi\",\"email\":\"kenneth@optis.be\",\"id\":2}",
       "3": "{\"name\":\"Claudiu Matei\",\"username\":\"claudiu\",\"password\":\"$2a$10$6b9jxIwb6y84gpq.ZU57YegRM4BWxHoXc.K/WwlEOJTa/9fO7cCta\",\"email\":\"claudiu@optis.be\",\"id\":3}"
     },
     "AccessToken": {
-      "Nd5XZxbv58aBAJ8dqAWI7G4poahRJ7j9T5BRzhYjNlZ9k1aFGW3pSBMMTMCIDepQ": "{\"id\":\"Nd5XZxbv58aBAJ8dqAWI7G4poahRJ7j9T5BRzhYjNlZ9k1aFGW3pSBMMTMCIDepQ\",\"ttl\":1209600,\"created\":\"2017-03-03T06:31:21.439Z\",\"userId\":2}",
-      "d9RNuaoJFv4QjNxppaLeCTU3siZq5YaGckVGw8g1Lt5HyaJBuST98ecJKM0K4Ay6": "{\"id\":\"d9RNuaoJFv4QjNxppaLeCTU3siZq5YaGckVGw8g1Lt5HyaJBuST98ecJKM0K4Ay6\",\"ttl\":1209600,\"created\":\"2017-03-03T15:43:59.994Z\",\"userId\":2}"
     },
     "ACL": {},
     "RoleMapping": {

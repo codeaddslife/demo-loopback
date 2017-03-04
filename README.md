@@ -815,6 +815,89 @@ Run the command `mocha` now and you should see all tests passing:
 Ok, we're almost done now. Last stop: Deploy to Production.
 
 ## Deployment
+In order to go to production, we need some 
+[Environment-specific configuration](https://loopback.io/doc/en/lb3/Environment-specific-configuration.html) 
+
+Loopback has naming conventions for this. For security reasons, we don't want to show the API explorer when running in 
+production. Create a file named /server/componenet-config.prod.json
+
+```
+{
+  "loopback-component-explorer": null
+}
+
+```
+
+We also don't want to work against an in-memory database. We will switch to mongoDB here. 
+We will have to install the [MongoDB Connector](https://loopback.io/doc/en/lb3/MongoDB-connector.html) for it:
+
+```
+npm install loopback-connector-mongodb --save
+```
+
+I will use an [MLab](https://mlab.com)-hosted MongoDB. You can sign up and create a free sandbox here too. 
+
+- Create a database 'reservations'
+- The username credentials you used to signup for MLab are not used to connect in your application, make sure you 
+ create a database user here:
+ 
+ ![MLab](./mlab.png)
+
+
+Create a new file called server/datasources.prod.json and add your mongodb settings:
+
+```
+{
+  "reservationDS": {
+    "host": "ds039880.mlab.com",
+    "port": 39880,
+    "url":  false,
+    "database": "reservations",
+    "name": "reservations",
+    "connector": "mongodb",
+    "user": "YOUR_USERNAME",
+    "password": "YOUR_PASSWORD"
+  }
+}
+```
+
+Notice dat we use the naming pattern componenet-config.env.json and datasources.env.json here. 
+Loopback uses NODE_ENV to decide what config should be loaded. Let's change our environment to prod.
+
+```
+export NODE_ENV="prod"
+```
+
+Loopback will now use our new configuration. Our explorer is disabled and we can still use are api: 
+
+```
+http://localhost:3000/api/campgrounds
+```
+
+Since we are working on mongoDB now, we don't have any test data available anymore. Let's create a collection 
+'campground' and when you click on the collection, you can add a new document.
+
+You can do all of this inside the mLab web interface. E.g:
+
+
+```
+{
+    "name": "Salt Lake City KOA",
+    "location":{
+        "lat": 40.772112, 
+        "lng": -111.932165
+    }
+}
+```
+
+When you created the document and go to http://localhost:3000/api/campgrounds and you should see the newly created.
+
+
+
+
+
+
+
 
 
 

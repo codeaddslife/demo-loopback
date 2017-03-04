@@ -1,0 +1,12 @@
+{
+  "reservationDS": {
+    "host": "ds039880.mlab.com",
+    "port": 39880,
+    "url":  false,
+    "database": "reservations",
+    "name": "reservations",
+    "connector": "mongodb",
+    "user": "YOUR_USERNAME",
+    "password": "YOUR_PASSWORD"
+  }
+}
