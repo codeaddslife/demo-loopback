@@ -515,7 +515,7 @@ Or you can add the access token as a request parameter. Let's try this out.
   
 - But I can't see Kenneth's reservations: `/api/customers/2/reservations?access_token=v51y2iZa1nkKTWC7s1yKELaIatfDJPVxcEEVa6FFIG4llZCGyZVbwR4plhfpYAxx`
   
-- As Andy, I can Kenneth's reservations: `/api/customers/2/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
+- As Andy, I can see Kenneth's reservations: `/api/customers/2/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
   
 - And also Claudiu's reservations: `/api/customers/3/reservations?access_token=okxVkWcdoVzWb3WmCK9KkiuBArz1HOOHrIn1h2mOfa0kBzeUna1V9wFmFRe6BCHe`
   
