@@ -12,7 +12,7 @@ Loopback comes with a [CLI tool](https://loopback.io/doc/en/lb3/Command-line-too
 You can configure everything manually, but the CLI tool is just a really handy gift to get you started. Install it via 
 the node package manager: `npm install -g loopback-cli`
 
-When installed, type `lb to start the [yeoman-generator](http://yeoman.io):
+When installed, type ```lb``` to start the [yeoman-generator](http://yeoman.io):
 
 ```
      _-----_     
@@ -62,7 +62,7 @@ your browser to see a basic [Swagger-UI](http://swagger.io/swagger-ui/)
 Look at server/datasources.json. We have no datasources configured yet. We will use an in-memory database here, 
 but there are many [database connectors available](https://loopback.io/doc/en/lb3/Database-connectors.html) out-of-the-box. 
 
-Type lb datasource to start the generator again.
+Type ```lb datasource``` to start the generator again.
 
 ```
 ? Enter the data-source name: reservationDS
@@ -147,7 +147,7 @@ the previous section. Create a db.json file at the root of the project.
 ```
 
 Restart the server and try again. You should now see 4 campgrounds.
-We will finish this part by generating our reservation model, lb model:
+We will finish this part by generating our reservation model, ```lb model```:
 
 ```
 ? Enter the model name: reservation
