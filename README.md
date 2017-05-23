@@ -392,7 +392,7 @@ We will now add 3 users to application:
 - Kenneth, a customer : (username: kenneth, password: kenneth)
 - Claudiu, another customer: (username: claudiu, password: claudiu)
 
-The passwords need to be hashed in the db.json file. We also link our reservations to our customers.
+The passwords need to be hashed in the db.json file. We also link our reservations to our customers(by adding ```customerId``` values to ```reservation``` table).
 
 ```
 {
